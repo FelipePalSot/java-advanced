@@ -2,6 +2,7 @@ package com.catanddog.proyecto.queue;
 
 import java.util.NoSuchElementException;
 import java.util.LinkedList;
+import java.util.Objects;
 
 public class Queue<T> {
     private final LinkedList<T> elements =  new LinkedList<>();
@@ -13,19 +14,25 @@ public class Queue<T> {
 
     public T peek(){
         if(isEmpty()){
-            throw new NoSuchFieldException("La cola esta vacia");
+            throw new NoSuchElementException("La cola esta vacia");
         }
         return elements.getFirst();
     }
 
-    public void dequeue() {
+    public T dequeue() {
         if(isEmpty()){
-            throw new NoSuchFieldException("La cola esta vacia");
+            throw new NoSuchElementException("La cola esta vacia");
         }
         return elements.removeFirst();
     }
 
     public boolean isEmpty(){
         return elements.isEmpty();
+    }
+
+    public void print(){
+        for(Object o: elements){
+            System.out.println(o);
+        }
     }
 }
